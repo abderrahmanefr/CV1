@@ -1,0 +1,137 @@
+/* Palette de couleurs :
+   - Couleur principale : #2c3e50 (bleu foncé)
+   - Couleur secondaire : #ecf0f1 (gris clair)
+   - Couleur d'accent : #3498db (bleu vif)
+   - Couleur de texte : #2c3e50
+*/
+
+/* Réinitialisation de base */
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* Corps de la page */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background-color: #ecf0f1;
+    padding: 20px;
+}
+
+/* En-tête */
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+/* Sections principales */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Listes */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* Articles */
+article {
+    margin-bottom: 15px;
+}
+
+article h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+/* Section Contact */
+#contact p {
+    margin-bottom: 10px;
+}
+
+/* Pied de page */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    font-size: 0.9rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Styles responsives pour les écrans de moins de 768px */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    header img {
+        margin-bottom: 10px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    section {
+        margin-bottom: 15px;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    article h3 {
+        font-size: 1.2rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
