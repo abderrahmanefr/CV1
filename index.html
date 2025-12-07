@@ -1,93 +1,180 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV/Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Multilingue - Abderrahmane</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+/* Base styles reset */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+body{background:var(--bg);color:var(--text);transition:0.4s;}
+
+:root{
+    --bg:#f5f5f5;
+    --text:#222;
+    --primary:#3498db;
+    --card:#ffffff;
+    --shadow:rgba(0,0,0,0.15);
+}
+.dark{
+    --bg:#1d1d1d;
+    --text:#f5f5f5;
+    --primary:#2980b9;
+    --card:#262626;
+    --shadow:rgba(255,255,255,0.1);
+}
+
+/* Sidebar */
+.sidebar{
+    width:260px;height:100vh;background:var(--primary);color:white;padding:30px;position:fixed;top:0;left:0;
+}
+.sidebar nav a{display:block;margin:10px 0;color:white;text-decoration:none;font-size:1.1rem;}
+.sidebar nav a:hover{opacity:0.8}
+.sidebar h2{margin-bottom:20px;font-size:1.8rem;}
+
+/* Main */
+main{margin-left:280px;padding:30px;}
+.section{
+    background:var(--card);padding:25px;margin-bottom:20px;border-radius:12px;
+    box-shadow:0 4px 12px var(--shadow);
+}
+.section h2{color:var(--primary);margin-bottom:10px;}
+
+/* Profile header */
+.header-profile{display:flex;gap:20px;align-items:center;}
+.header-profile img{
+    width:130px;height:130px;border-radius:50%;border:4px solid var(--primary);
+}
+</style>
 </head>
 <body>
-    <header style="display: flex; align-items: center; justify-content: flex-start;">
-        <img src="photo.jpg" alt="Photo de profil" style="width: 150px; height: 150px; border-radius: 50%; margin-right: 20px;">
-        <div style="margin-left: 20px;">
-            <h1 style="margin-left: 20px;">Abderrahmane</h1>
-            <h2>Titre professionnel</h2>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <h2>Abderrahmane</h2>
+    <nav>
+        <a href="#profil"><i class="fa fa-user"></i> Profil</a>
+        <a href="#competences"><i class="fa fa-tools"></i> Compétences</a>
+        <a href="#experience"><i class="fa fa-briefcase"></i> Expérience</a>
+        <a href="#formation"><i class="fa fa-graduation-cap"></i> Formation</a>
+        <a href="#portfolio"><i class="fa fa-images"></i> Portfolio</a>
+        <a href="#langues"><i class="fa fa-language"></i> Langues</a>
+        <a href="#loisirs"><i class="fa fa-heart"></i> Loisirs</a>
+        <a href="#contact"><i class="fa fa-envelope"></i> Contact</a>
+    </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main>
+    <!-- PROFIL -->
+    <section id="profil" class="section">
+        <div class="header-profile">
+            <img src="photo.jpg" alt="Photo profil">
+            <div>
+                <h1>Abderrahmane El Mansouri</h1>
+                <p>Développeur Web Full-Stack | Créateur d’expériences digitales modernes</p>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section id="competences" style="display: flex; align-items: center; margin-top: 20px;">
-            <img src="photo.jpg" alt="Photo de profil" style="width: 150px; height: 150px; border-radius: 50%; margin-right: 20px;">
-            <ul>
-                <li><i class="fas fa-code"></i> Compétence 1</li>
-                <li><i class="fas fa-database"></i> Compétence 2</li>
-                <li><i class="fas fa-project-diagram"></i> Compétence 3</li>
-            </ul>
-        </section>
+    <!-- COMPÉTENCES -->
+    <section id="competences" class="section">
+        <h2>Compétences</h2>
+        <ul>
+            <li><i class="fa fa-code"></i> HTML / CSS / JavaScript</li>
+            <li><i class="fa fa-server"></i> Node.js / PHP</li>
+            <li><i class="fa fa-database"></i> MySQL / MongoDB</li>
+            <li><i class="fa fa-mobile-alt"></i> Responsive Design</li>
+            <li><i class="fa fa-project-diagram"></i> Gestion de projets</li>
+        </ul>
+    </section>
 
-        <section id="experience">
-            <h2>Expérience</h2>
-            <article>
-                <h3>Poste 1</h3>
-                <p>Description du poste 1.</p>
-            </article>
-            <article>
-                <h3>Poste 2</h3>
-                <p>Description du poste 2.</p>
-            </article>
-        </section>
-
-        <section id="formation">
-            <h2>Formation</h2>
-            <ul>
-                <li>Diplôme 1</li>
-                <li>Diplôme 2</li>
-            </ul>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email : exemple@email.com</p>
-            <p>Téléphone : 0123456789</p>
-        </section>
-
-        <section id="langues" style="margin-top: 20px;">
-            <h2>Langues Parlées</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                <div style="background: linear-gradient(135deg, #3498db, #2c3e50); color: #fff; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                    <h3>Français</h3>
-                    <p>Niveau : Avancé</p>
-                </div>
-                <div style="background: linear-gradient(135deg, #3498db, #2c3e50); color: #fff; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                    <h3>Anglais</h3>
-                    <p>Niveau : Intermédiaire</p>
-                </div>
-                <div style="background: linear-gradient(135deg, #3498db, #2c3e50); color: #fff; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                    <h3>Espagnol</h3>
-                    <p>Niveau : Débutant</p>
-                </div>
+    <!-- EXPERIENCE (TIMELINE) -->
+    <section id="experience" class="section">
+        <h2>Expérience Professionnelle</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Développeur Full-Stack – DigitalWave (2022–2025)</h3>
+                <p>Création de plateformes web, API et optimisation UX/UI.</p>
             </div>
-        </section>
-
-        <section id="loisirs" style="margin-top: 20px;">
-            <h2>Loisirs</h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
-                <div style="background: #3498db; color: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                    <p>Lecture</p>
-                </div>
-                <div style="background: #3498db; color: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                    <p>Voyages</p>
-                </div>
-                <div style="background: #3498db; color: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                    <p>Sport</p>
-                </div>
+            <div class="timeline-item">
+                <h3>Front-End Developer – TechVision (2020–2022)</h3>
+                <p>Interfaces modernes en React & dashboards interactifs.</p>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 Nom Prénom. Tous droits réservés.</p>
-    </footer>
+    <!-- FORMATION -->
+    <section id="formation" class="section">
+        <h2>Formation</h2>
+        <p><strong>Master Informatique</strong> – Université Hassan II (2018–2020)</p>
+        <p><strong>Licence Développement Web</strong> – EST Casablanca (2015–2018)</p>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="project">Projet 1 – Site vitrine</div>
+            <div class="project">Projet 2 – Dashboard admin</div>
+            <div class="project">Projet 3 – Application mobile</div>
+        </div>
+    </section>
+
+    <!-- LANGUES -->
+    <section id="langues" class="section">
+        <h2>Langues Parlées</h2>
+        <div class="langues-grid">
+            <div class="langue-card"><h3>Français</h3><p>Avancé</p></div>
+            <div class="langue-card"><h3>Anglais</h3><p>Intermédiaire</p></div>
+            <div class="langue-card"><h3>Arabe</h3><p>Langue maternelle</p></div>
+        </div>
+    </section>
+
+    <!-- LOISIRS -->
+    <section id="loisirs" class="section">
+        <h2>Loisirs</h2>
+        <div class="loisirs">
+            <div class="loisir">Lecture</div>
+            <div class="loisir">Voyages</div>
+            <div class="loisir">Sport</div>
+            <div class="loisir">Photographie</div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Email : <strong>abderrahmane@example.com</strong></p>
+        <p>Téléphone : <strong>+212 6 22 44 55 66</strong></p>
+    </section>
+
+</main>
+
+<!-- BOUTON MODE SOMBRE -->
+<button class="theme-btn" id="themeToggle"><i class="fa fa-moon"></i></button>
+
+<!-- SCRIPT -->
+<script>
+// MODE SOMBRE / CLAIR
+document.getElementById("themeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+});
+
+// ANIMATION AU SCROLL
+const sections = document.querySelectorAll(".section");
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            sec.classList.add("visible");
+        }
+    });
+});
+</script>
+
 </body>
 </html>
