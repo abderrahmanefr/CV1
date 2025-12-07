@@ -3,178 +3,493 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV Multilingue - Abderrahmane</title>
+<title>CV Multilingue – Abderrahmane</title>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
 <style>
-/* Base styles reset */
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
-body{background:var(--bg);color:var(--text);transition:0.4s;}
+/* ========== RESET ========== */
+*{
+    margin:0;padding:0;box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
 
+body{
+    background:var(--bg);
+    color:var(--txt);
+    transition:0.3s;
+}
+
+/* ========== THEMES ========== */
 :root{
-    --bg:#f5f5f5;
-    --text:#222;
-    --primary:#3498db;
-    --card:#ffffff;
-    --shadow:rgba(0,0,0,0.15);
-}
-.dark{
-    --bg:#1d1d1d;
-    --text:#f5f5f5;
-    --primary:#2980b9;
-    --card:#262626;
-    --shadow:rgba(255,255,255,0.1);
+    --bg:#f2f4f7;
+    --txt:#222;
+    --card:#fff;
+    --primary:#2563eb;
 }
 
-/* Sidebar */
+.theme-blue{
+    --primary:#2563eb;
+}
+.theme-green{
+    --primary:#0ea66c;
+}
+.theme-purple{
+    --primary:#7c3aed;
+}
+.theme-red{
+    --primary:#e11d48;
+}
+
+/* ========== SIDEBAR ========== */
 .sidebar{
-    width:260px;height:100vh;background:var(--primary);color:white;padding:30px;position:fixed;top:0;left:0;
+    width:260px;height:100vh;position:fixed;left:0;top:0;
+    background:var(--primary);color:#fff;padding:30px;
 }
-.sidebar nav a{display:block;margin:10px 0;color:white;text-decoration:none;font-size:1.1rem;}
+
+.sidebar nav a{
+    display:block;color:white;text-decoration:none;
+    margin:10px 0;font-size:1.05rem;
+}
+
 .sidebar nav a:hover{opacity:0.8}
-.sidebar h2{margin-bottom:20px;font-size:1.8rem;}
 
-/* Main */
-main{margin-left:280px;padding:30px;}
-.section{
-    background:var(--card);padding:25px;margin-bottom:20px;border-radius:12px;
-    box-shadow:0 4px 12px var(--shadow);
+/* ========== MAIN ========== */
+main{
+    margin-left:300px;
+    padding:30px;
 }
-.section h2{color:var(--primary);margin-bottom:10px;}
 
-/* Profile header */
-.header-profile{display:flex;gap:20px;align-items:center;}
+/* SECTIONS */
+.section{
+    background:var(--card);
+    padding:25px;margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* PROFILE */
+.header-profile{
+    display:flex;gap:20px;align-items:center;
+}
+
 .header-profile img{
-    width:130px;height:130px;border-radius:50%;border:4px solid var(--primary);
+    width:140px;height:140px;border-radius:50%;
+    border:4px solid var(--primary);
+}
+
+/* LANGUAGE BUTTON */
+#btnLang{
+    position:fixed;top:20px;right:20px;
+    background:var(--primary);
+    color:white;padding:10px 15px;
+    border:none;border-radius:8px;cursor:pointer;
+    font-size:15px;
+}
+
+#langMenu{
+    position:fixed;top:70px;right:20px;
+    background:var(--card);
+    border-radius:8px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    display:none;
+}
+
+#langMenu button{
+    background:none;border:none;
+    padding:10px 20px;width:100%;
+    text-align:left;cursor:pointer;
+    color:var(--txt);
+}
+
+/* COLOR BUTTON */
+#btnColor{
+    position:fixed;top:20px;right:140px;
+    background:var(--primary);
+    color:white;padding:10px 15px;
+    border:none;border-radius:8px;cursor:pointer;
+    font-size:15px;
 }
 </style>
 </head>
-<body>
+
+
+<body class="theme-blue ltr">
+
+<!-- LANGUAGE BUTTON -->
+<button id="btnLang">FR</button>
+<div id="langMenu">
+    <button onclick="changeLang('fr')">🇫🇷 Français</button>
+    <button onclick="changeLang('en')">🇬🇧 English</button>
+    <button onclick="changeLang('ar')">🇸🇦 العربية</button>
+</div>
+
+<!-- COLOR BUTTON -->
+<button id="btnColor">Couleur : Bleu</button>
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
-    <h2>Abderrahmane</h2>
+    <h2 id="sbName">Abderrahmane</h2>
+
     <nav>
-        <a href="#profil"><i class="fa fa-user"></i> Profil</a>
-        <a href="#competences"><i class="fa fa-tools"></i> Compétences</a>
-        <a href="#experience"><i class="fa fa-briefcase"></i> Expérience</a>
-        <a href="#formation"><i class="fa fa-graduation-cap"></i> Formation</a>
-        <a href="#portfolio"><i class="fa fa-images"></i> Portfolio</a>
-        <a href="#langues"><i class="fa fa-language"></i> Langues</a>
-        <a href="#loisirs"><i class="fa fa-heart"></i> Loisirs</a>
-        <a href="#contact"><i class="fa fa-envelope"></i> Contact</a>
+        <a href="#profil" id="sbProfil"></a>
+        <a href="#competences" id="sbCompetence"></a>
+        <a href="#experience" id="sbExperience"></a>
+        <a href="#formation" id="sbFormation"></a>
+        <a href="#portfolio" id="sbPortfolio"></a>
+        <a href="#loisirs" id="sbLoisirs"></a>
+        <a href="#contact" id="sbContact"></a>
     </nav>
+
+    <hr style="margin:20px 0;border-color:rgba(255,255,255,0.4);">
+
+    <!-- INFO PERSONNELLES -->
+    <h3 style="margin-bottom:10px;">Informations</h3>
+    <p><i class="fa fa-envelope"></i> abderrahmane@example.com</p>
+    <p><i class="fa fa-phone"></i> +212 6 22 44 55 66</p>
+    <p><i class="fa fa-map-marker-alt"></i> Casablanca, Maroc</p>
+
+    <hr style="margin:20px 0;border-color:rgba(255,255,255,0.4);">
+
+    <!-- LOGICIELS -->
+    <h3 style="margin-bottom:10px;">Logiciels</h3>
+    <ul style="margin-left:15px;">
+        <li>Visual Studio Code</li>
+        <li>Git & GitHub</li>
+        <li>Figma / Adobe XD</li>
+        <li>Postman</li>
+        <li>Docker (Bases)</li>
+    </ul>
+
+    <hr style="margin:20px 0;border-color:rgba(255,255,255,0.4);">
+
+    <!-- CERTIFICATIONS -->
+    <h3 style="margin-bottom:10px;">Certifications</h3>
+    <ul style="margin-left:15px;">
+        <li>Certificat : Développement Web Moderne</li>
+        <li>Scrum Fundamentals</li>
+        <li>JavaScript ES6</li>
+
+        <!-- Certificats ajoutés précédemment -->
+        <li>Certificat de langue française – Niveau C1</li>
+        <li>Certification Analyse & Conception UML</li>
+
+        <!-- ⭐ Nouveaux certificats Gestion de Projet -->
+        <li>Gestion de Projet – Méthodologie Agile & Scrum</li>
+        <li>Gestion de Projet – PMP Fundamentals</li>
+    </ul>
+
+    <hr style="margin:20px 0;border-color:rgba(255,255,255,0.4);">
+
+    <!-- SOFT SKILLS -->
+    <h3 style="margin-bottom:10px;">Soft Skills</h3>
+    <ul style="margin-left:15px;">
+        <li>Travail en équipe</li>
+        <li>Créativité</li>
+        <li>Communication</li>
+        <li>Résolution de problèmes</li>
+        <li>Organisation</li>
+    </ul>
+
+    <hr style="margin:20px 0;border-color:rgba(255,255,255,0.4);">
+
+    <!-- RÉSEAUX SOCIAUX -->
+    <h3 style="margin-bottom:10px;">Réseaux</h3>
+    <p><i class="fab fa-linkedin"></i> /abderrahmane-dev</p>
+    <p><i class="fab fa-github"></i> /abderrahmane-code</p>
 </aside>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <main>
-    <!-- PROFIL -->
-    <section id="profil" class="section">
-        <div class="header-profile">
-            <img src="photo.jpg" alt="Photo profil">
-            <div>
-                <h1>Abderrahmane El Mansouri</h1>
-                <p>Développeur Web Full-Stack | Créateur d’expériences digitales modernes</p>
-            </div>
+
+<!-- PROFIL -->
+<section id="profil" class="section">
+    <div class="header-profile">
+        <img src="photo.jpg">
+        <div>
+            <h1 id="profileName"></h1>
+            <p id="profileJob"></p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- COMPÉTENCES -->
-    <section id="competences" class="section">
-        <h2>Compétences</h2>
-        <ul>
-            <li><i class="fa fa-code"></i> HTML / CSS / JavaScript</li>
-            <li><i class="fa fa-server"></i> Node.js / PHP</li>
-            <li><i class="fa fa-database"></i> MySQL / MongoDB</li>
-            <li><i class="fa fa-mobile-alt"></i> Responsive Design</li>
-            <li><i class="fa fa-project-diagram"></i> Gestion de projets</li>
-        </ul>
-    </section>
 
-    <!-- EXPERIENCE (TIMELINE) -->
-    <section id="experience" class="section">
-        <h2>Expérience Professionnelle</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Développeur Full-Stack – DigitalWave (2022–2025)</h3>
-                <p>Création de plateformes web, API et optimisation UX/UI.</p>
-            </div>
-            <div class="timeline-item">
-                <h3>Front-End Developer – TechVision (2020–2022)</h3>
-                <p>Interfaces modernes en React & dashboards interactifs.</p>
-            </div>
-        </div>
-    </section>
+<!-- COMPETENCES -->
+<section id="competences" class="section">
+    <h2 id="compTitle"></h2>
+    <ul id="compList"></ul>
+</section>
 
-    <!-- FORMATION -->
-    <section id="formation" class="section">
-        <h2>Formation</h2>
-        <p><strong>Master Informatique</strong> – Université Hassan II (2018–2020)</p>
-        <p><strong>Licence Développement Web</strong> – EST Casablanca (2015–2018)</p>
-    </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="section">
-        <h2>Portfolio</h2>
-        <div class="portfolio-grid">
-            <div class="project">Projet 1 – Site vitrine</div>
-            <div class="project">Projet 2 – Dashboard admin</div>
-            <div class="project">Projet 3 – Application mobile</div>
-        </div>
-    </section>
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+    <h2 id="expTitle"></h2>
+    <div id="expList"></div>
+</section>
 
-    <!-- LANGUES -->
-    <section id="langues" class="section">
-        <h2>Langues Parlées</h2>
-        <div class="langues-grid">
-            <div class="langue-card"><h3>Français</h3><p>Avancé</p></div>
-            <div class="langue-card"><h3>Anglais</h3><p>Intermédiaire</p></div>
-            <div class="langue-card"><h3>Arabe</h3><p>Langue maternelle</p></div>
-        </div>
-    </section>
 
-    <!-- LOISIRS -->
-    <section id="loisirs" class="section">
-        <h2>Loisirs</h2>
-        <div class="loisirs">
-            <div class="loisir">Lecture</div>
-            <div class="loisir">Voyages</div>
-            <div class="loisir">Sport</div>
-            <div class="loisir">Photographie</div>
-        </div>
-    </section>
+<!-- FORMATION -->
+<section id="formation" class="section">
+    <h2 id="formTitle"></h2>
+    <ul id="formList"></ul>
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-        <h2>Contact</h2>
-        <p>Email : <strong>abderrahmane@example.com</strong></p>
-        <p>Téléphone : <strong>+212 6 22 44 55 66</strong></p>
-    </section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="section">
+    <h2 id="portTitle"></h2>
+    <ul id="portList"></ul>
+</section>
+
+
+<!-- LOISIRS -->
+<section id="loisirs" class="section">
+    <h2 id="hobbyTitle"></h2>
+    <ul id="hobbyList"></ul>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <h2 id="contactTitle"></h2>
+    <p id="email"></p>
+    <p id="tel"></p>
+</section>
 
 </main>
 
-<!-- BOUTON MODE SOMBRE -->
-<button class="theme-btn" id="themeToggle"><i class="fa fa-moon"></i></button>
 
-<!-- SCRIPT -->
 <script>
-// MODE SOMBRE / CLAIR
-document.getElementById("themeToggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-});
+/* =========================================
+  TEXTES MULTILINGUES
+========================================= */
+const TR = {
+fr:{
+    lang:"FR",
+    sidebar:{
+        profil:"Profil",
+        competences:"Compétences",
+        experience:"Expérience",
+        formation:"Formation",
+        portfolio:"Portfolio",
+        loisirs:"Loisirs",
+        contact:"Contact",
+    },
+    profile:{
+        name:"Abderrahmane El Mansouri",
+        job:"Développeur Web Full-Stack | Créateur d’expériences digitales modernes",
+    },
+    compTitle:"Compétences",
+    compList:[
+        "HTML / CSS / JavaScript",
+        "Node.js / PHP",
+        "MySQL / MongoDB",
+        "Responsive Design",
+        "Gestion de projets"
+    ],
+    expTitle:"Expérience Professionnelle",
+    expList:[
+        {role:"Développeur Full-Stack – DigitalWave (2022–2025)",desc:"Création de plateformes web et API"},
+        {role:"Front-End Developer – TechVision (2020–2022)",desc:"Interfaces modernes et dashboards"}
+    ],
+    formTitle:"Formation",
+    formList:[
+        "Master Informatique – Université Hassan II",
+        "Licence Développement Web – EST Casablanca"
+    ],
+    portTitle:"Portfolio",
+    portList:[
+        "Site vitrine moderne",
+        "Dashboard admin React",
+        "Application mobile"
+    ],
+    hobbyTitle:"Loisirs",
+    hobbyList:["Lecture","Sport","Voyages","Photographie"],
+    contactTitle:"Contact",
+    email:"Email : abderrahmane@example.com",
+    tel:"Téléphone : +212 6 22 44 55 66",
+},
 
-// ANIMATION AU SCROLL
-const sections = document.querySelectorAll(".section");
-window.addEventListener("scroll", () => {
-    sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-            sec.classList.add("visible");
-        }
-    });
-});
+
+en:{
+    lang:"EN",
+    sidebar:{
+        profil:"Profile",
+        competences:"Skills",
+        experience:"Experience",
+        formation:"Education",
+        portfolio:"Portfolio",
+        loisirs:"Hobbies",
+        contact:"Contact",
+    },
+    profile:{
+        name:"Abderrahmane El Mansouri",
+        job:"Full-Stack Web Developer | Creator of modern digital experiences",
+    },
+    compTitle:"Skills",
+    compList:[
+        "HTML / CSS / JavaScript",
+        "Node.js / PHP",
+        "MySQL / MongoDB",
+        "Responsive Design",
+        "Project Management"
+    ],
+    expTitle:"Professional Experience",
+    expList:[
+        {role:"Full-Stack Developer – DigitalWave (2022–2025)",desc:"Web platforms and APIs"},
+        {role:"Front-End Developer – TechVision (2020–2022)",desc:"Modern interfaces and dashboards"}
+    ],
+    formTitle:"Education",
+    formList:[
+        "Master in Computer Science – Hassan II University",
+        "Bachelor in Web Development – EST Casablanca"
+    ],
+    portTitle:"Portfolio",
+    portList:[
+        "Modern Business Website",
+        "React Admin Dashboard",
+        "Mobile Application"
+    ],
+    hobbyTitle:"Hobbies",
+    hobbyList:["Reading","Sports","Travel","Photography"],
+    contactTitle:"Contact",
+    email:"Email: abderrahmane@example.com",
+    tel:"Phone: +212 6 22 44 55 66",
+},
+
+
+ar:{
+    lang:"AR",
+    sidebar:{
+        profil:"الملف الشخصي",
+        competences:"المهارات",
+        experience:"الخبرة",
+        formation:"التعليم",
+        portfolio:"الأعمال",
+        loisirs:"الهوايات",
+        contact:"التواصل",
+    },
+    profile:{
+        name:"عبد الرحمن المنصوري",
+        job:"مطور ويب Full-Stack | صانع تجارب رقمية حديثة",
+    },
+    compTitle:"المهارات",
+    compList:[
+        "HTML / CSS / JavaScript",
+        "Node.js / PHP",
+        "MySQL / MongoDB",
+        "تصميم متجاوب",
+        "إدارة المشاريع"
+    ],
+    expTitle:"الخبرة المهنية",
+    expList:[
+        {role:"مطور Full-Stack – DigitalWave (2022–2025)",desc:"منصات ويب وواجهات API"},
+        {role:"مطور Front-End – TechVision (2020–2022)",desc:"واجهات حديثة ولوحات تحكم"}
+    ],
+    formTitle:"التعليم",
+    formList:[
+        "ماستر في المعلوميات – جامعة الحسن الثاني",
+        "إجازة في تطوير الويب – EST الدار البيضاء"
+    ],
+    portTitle:"الأعمال",
+    portList:[
+        "موقع تعريفي حديث",
+        "لوحة تحكم React",
+        "تطبيق هاتف"
+    ],
+    hobbyTitle:"الهوايات",
+    hobbyList:["القراءة","الرياضة","السفر","التصوير"],
+    contactTitle:"التواصل",
+    email:"البريد الإلكتروني: abderrahmane@example.com",
+    tel:"الهاتف: +212 6 22 44 55 66",
+}
+};
+
+
+/* =======================================================
+    APPLY LANGUAGE
+======================================================= */
+function changeLang(l){
+    const d = TR[l];
+
+    // RTL for Arabic
+    document.body.className = (l === "ar") ? "rtl" : "ltr";
+
+    // Update button
+    btnLang.textContent = d.lang;
+
+    // Sidebar
+    sbProfil.textContent   = d.sidebar.profil;
+    sbCompetence.textContent = d.sidebar.competences;
+    sbExperience.textContent = d.sidebar.experience;
+    sbFormation.textContent  = d.sidebar.formation;
+    sbPortfolio.textContent  = d.sidebar.portfolio;
+    sbLoisirs.textContent    = d.sidebar.loisirs;
+    sbContact.textContent    = d.sidebar.contact;
+
+    // Profile
+    profileName.textContent = d.profile.name;
+    profileJob.textContent = d.profile.job;
+
+    // Competences
+    compTitle.textContent = d.compTitle;
+    compList.innerHTML = d.compList.map(i=>`<li>${i}</li>`).join("");
+
+    // Experience
+    expTitle.textContent = d.expTitle;
+    expList.innerHTML = d.expList.map(i=>`
+        <p><strong>${i.role}</strong><br>${i.desc}</p><br>
+    `).join("");
+
+    // Formation
+    formTitle.textContent = d.formTitle;
+    formList.innerHTML = d.formList.map(i=>`<li>${i}</li>`).join("");
+
+    // Portfolio
+    portTitle.textContent = d.portTitle;
+    portList.innerHTML = d.portList.map(i=>`<li>${i}</li>`).join("");
+
+    // Hobbies
+    hobbyTitle.textContent = d.hobbyTitle;
+    hobbyList.innerHTML = d.hobbyList.map(i=>`<li>${i}</li>`).join("");
+
+    // Contact
+    contactTitle.textContent = d.contactTitle;
+    email.textContent = d.email;
+    tel.textContent = d.tel;
+
+    // Hide menu
+    langMenu.style.display="none";
+}
+
+// default language
+changeLang("fr");
+
+// Toggle language menu
+btnLang.onclick = () => {
+    langMenu.style.display = langMenu.style.display==="block" ? "none" : "block";
+};
+
+
+/* =======================================================
+    COLOR THEME BUTTON
+======================================================= */
+const themes = [
+    {class:"theme-blue",label:"Bleu"},
+    {class:"theme-green",label:"Vert"},
+    {class:"theme-purple",label:"Violet"},
+    {class:"theme-red",label:"Rouge"},
+];
+
+let themeIndex = 0;
+
+btnColor.onclick = () => {
+    themeIndex = (themeIndex + 1) % themes.length;
+    document.body.className = themes[themeIndex].class;
+    btnColor.textContent = "Couleur : " + themes[themeIndex].label;
+};
 </script>
+
 
 </body>
 </html>
